@@ -1,6 +1,8 @@
 package com.samsung.airbnb.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
@@ -13,6 +15,8 @@ import java.time.LocalDateTime;
 @Entity
 @Setter
 @Getter
+@AllArgsConstructor
+@Builder
 @Table(uniqueConstraints = @UniqueConstraint(
         name = "unique_hotel_room_date",
         columnNames = {"hotel_id", "room_id", "date"}
@@ -39,7 +43,7 @@ public class Inventory {
     @Column(nullable = false)
     private Integer totalCount;
 
-    @Column(nullable = false, precision = 2, scale = 2)
+    @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal surgeFactor;
 
     @Column(nullable = false, precision = 10, scale = 2)
@@ -56,4 +60,8 @@ public class Inventory {
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    public Inventory() {
+
+    }
 }

@@ -43,4 +43,8 @@ public class Hotel {
 
     @OneToMany(mappedBy = "hotel")
     private List<Room> rooms;
+
+    @ManyToOne
+    private User owner;
+
 }
